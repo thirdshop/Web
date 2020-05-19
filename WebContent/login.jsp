@@ -9,7 +9,7 @@
 <body>
 
 	<h1>登錄頁面</h1>
-	<form action="/web02_login/loginServlet" method="post">
+	<form action="/webcontent/loginServlet" method="post">
 		<table border="1" width="400">
 			<tr>
 				<td>用戶名</td>
