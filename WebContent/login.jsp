@@ -9,7 +9,7 @@
 <body>
 
 	<h1>登錄頁面</h1>
-	<form action="/webcontent/loginServlet" method="post">
+	<form action="/WebContent/loginServlet" method="post">
 		<table border="1" width="400">
 			<tr>
 				<td>用戶名</td>
@@ -20,7 +20,7 @@
 				<td><input type="password" name="password" /></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" value="登陸" /></td>
+				<td colspan="2"><input type="submit" value="登入" /></td>
 			</tr>
 		</table>
 	</form>
