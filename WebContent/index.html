@@ -39,11 +39,29 @@
 				height:200px;
 				border:8px #ff8400 groove;
 			}
-            button{
-                outline:none;
+			strong{
+				color:red;
+				font-size:30px;	
+				font-weight: bold;
+			}
+			.tbl{	
+				text-align:left;
+                border:8px #ff8400 groove;
+                cellpadding="10";
+				width:670px;
+			}
+			.btn{
+				outline:none;
                 border:none;
                 background-color:white;
-            }
+			}
+			.bn{
+				display:flexbox;
+				width: 30px;
+				font-weight: 400;
+				font-size: 17px;
+				height: 30px;
+			}
             .a{
                 font-weight:bold;
                 color:yellow;
@@ -78,83 +96,83 @@
             }
             function twoB(){
                 $('#2B').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '700', height: '310', resizable: false});
+                duration: 100}, width: '700', height: '340', resizable: false});
             }
             function twoH(){
                 $('#2H').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '700', height: '310', resizable: false});
+                duration: 100}, width: '700', height: '340', resizable: false});
             }
             function threeB(){
                 $('#3B').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '700', height: '310', resizable: false});
+                duration: 100}, width: '700', height: '340', resizable: false});
             }
             function fourB(){
                 $('#4B').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '700', height: '310', resizable: false});
+                duration: 100}, width: '700', height: '340', resizable: false});
             }
             function B(){
                 $('#B').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '700', height: '310', resizable: false});
+                duration: 100}, width: '700', height: '340', resizable: false});
             }
             function F(){
                 $('#F').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '700', height: '310', resizable: false});
+                duration: 100}, width: '700', height: '340', resizable: false});
             }
             function H(){
                 $('#H').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '700', height: '310', resizable: false});
+                duration: 100}, width: '700', height: '340', resizable: false});
             }
             function HB(){
                 $('#HB').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '700', height: '310', resizable: false});
+                duration: 100}, width: '700', height: '340', resizable: false});
             }
             function auto(){
                 $('#auto').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '700', height: '310', resizable: false});
+                duration: 100}, width: '700', height: '340', resizable: false});
             }
             function bkp(){
                 $('#bkp').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '700', height: '310', resizable: false});
+                duration: 100}, width: '700', height: '340', resizable: false});
             }
             function blp(){
                 $('#blp').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '700', height: '310', resizable: false});
+                duration: 100}, width: '700', height: '340', resizable: false});
             }
             function rdp(){
                 $('#rdp').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '700', height: '310', resizable: false});
+                duration: 100}, width: '700', height: '340', resizable: false});
             }
             function bkm(){
                 $('#bkm').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '700', height: '310', resizable: false});
+                duration: 100}, width: '700', height: '340', resizable: false});
             }
             function blm(){
                 $('#blm').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '700', height: '310', resizable: false});
+                duration: 100}, width: '700', height: '340', resizable: false});
             }
             function rm(){
                 $('#rm').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '700', height: '310', resizable: false});
+                duration: 100}, width: '700', height: '340', resizable: false});
             }
             function ruler(){
                 $('#ruler').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '700', height: '310', resizable: false});
+                duration: 100}, width: '700', height: '340', resizable: false});
             }
             function eraser(){
                 $('#eraser').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '700', height: '310', resizable: false});
+                duration: 100}, width: '700', height: '340', resizable: false});
             }
             function like(){
                 $('#like').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '700', height: '310', resizable: false});
+                duration: 100}, width: '700', height: '340', resizable: false});
             }
             function likea(){
                 $('#likea').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '700', height: '310', resizable: false});
+                duration: 100}, width: '700', height: '340', resizable: false});
             }
             function likebar(){
                 $('#likebar').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '700', height: '310', resizable: false});
+                duration: 100}, width: '700', height: '340', resizable: false});
             }
             function addToCartFunction(sidd){
             	var sid = sidd;
@@ -190,18 +208,16 @@
 		</script>
 	</head>	
 	<body onload="run()";>
-		<div style="text-align: right; font-size: 36px;">
-			<button onclick="showCart();">我的購物車</span></button><a href="doStationeryServlet?uid=35"></a>
-		</div>
 		<div align="center" style="background-color:#ffe4b5;">
-			<img src="image/logo.png" width="250" height="100"/>
+				<img src="image/logo.png" width="250" height="100"/>
+				<a href="doStationeryServlet?uid=35"><img src="image/car.jpg" onclick="showCart();" align="right"/></a>
 		</div>
 		<div align="right">
 			<!-- 註冊 -->
-			<a href="register.html" class="a" style="text-decoration:none;"><span id="register"></span></a>
+			<a href="register.html" class="a" id="re" style="text-decoration:none;"><span id="register"></span></a>
 			<span id="slash" class="a" style="text-decoration:none;"></span>
 			<!-- 登入 -->
-			<a href="login.html" class="a" style="text-decoration:none;"><span id="login"></span></a>
+			<a href="login.html" class="a" id="login" style="text-decoration:none;"><span id="login"></span></a>
 			
 			<!-- 歡迎 xxx -->
             <span id="span_username" style="color:yellow;"></span>
@@ -275,40 +291,128 @@
 			</table>
 		</div>
         <div title="【2B】0.5自動鉛筆芯" id="2B" class="jump">
-            <div style="float:left;">
-                <img src="image/2B.jpg">
-            </div>
-            <div style="float:left;">
-                <ul>
-                    <li>自動鉛筆筆芯 0.5mm 2B</li>
-                    <li>適用0.5mm自動鉛筆</li>
-                    <li>適合一般書寫及繪圖</li>
-                    <li>學生與辦公人士皆適宜</li>
-                    <li>不會傷到紙面,經濟實惠</li>
-                    <li>規格齊全使用方便,書寫順暢流利</li>
-                </ul>
-            </div>
-            <div style="float:right;">
-                <button id="1" onclick="addToCartFunction(this.id);"><img src="image/car.jpg"></button>
-            </div>
+			<table class="tbl">
+				<tr>
+					<td>
+						<div style="float:left;">
+							<img src="image/2B.jpg">
+						</div>
+						<div style="float:left;">
+							<ul>
+								<li>自動鉛筆筆芯 0.5mm 2B</li>
+								<li>適用0.5mm自動鉛筆</li>
+								<li>適合一般書寫及繪圖</li>
+								<li>學生與辦公人士皆適宜</li>
+								<li>不會傷到紙面,經濟實惠</li>
+								<li>規格齊全使用方便,書寫順暢流利</li>
+							</ul>
+						</div>
+						<div style="float:right;">
+							<button  class="btn" id="1" onclick="addToCartFunction(this.id);"><img src="image/car.jpg"></button>
+						</div>
+					</td>	
+				</tr>
+			</table>
+			<div>
+				<span style="font-size:25px;">單價:</span>
+				<strong><span id="NT2B"><span></strong>
+				<span style="font-size:25px;">購買數量:</span>
+				<button id="down2B" class="bn" type="button">-</button>
+                <strong id="number2B"></strong>
+                <button id="up2B" class="bn" type="button">+</button>
+				<span style="font-size:25px;">購買金額:</span>
+				<strong id="total2B"></strong>
+			</div>
+			<script>
+				var NT2B = 10;
+				var shown2B = 0;
+				var all2B = 0;
+				var down2B = document.getElementById("down2B");
+				var up2B = document.getElementById("up2B");
+				var number2B = document.getElementById("number2B");
+				var total2B = document.getElementById("total2B");
+				document.getElementById("NT2B").innerHTML = NT2B;
+				number2B.innerHTML = shown2B;
+				total2B.innerHTML = all2B;
+				down2B.onclick=function(){
+					if(shown2B > 0){
+						shown2B--;
+						all2B = shown2B * NT2B;
+						number2B.innerHTML = shown2B;
+						total2B.innerHTML = all2B;
+					}
+				}
+				up2B.onclick=function(){
+					if(shown2B < 20){
+						shown2B++;
+						all2B = shown2B * NT2B;
+						number2B.innerHTML = shown2B;
+						total2B.innerHTML = all2B;
+					}
+				}
+			</script>
         </div>
         <div title="【2H】0.5自動鉛筆芯" id="2H" class="jump">
-            <div style="float:left;">
-                <img src="image/2H.jpg">
-            </div>
-            <div style="float:left;">
-                <ul>
-                    <li>自動鉛筆筆芯 0.5mm 2H</li>
-                    <li>適用0.5mm自動鉛筆</li>
-                    <li>適合一般書寫及繪圖</li>
-                    <li>學生與辦公人士皆適宜</li>
-                    <li>不會傷到紙面,經濟實惠</li>
-                    <li>規格齊全使用方便,書寫順暢流利</li>
-                </ul>
-            </div>
-            <div style="float:right;">
-                <button id="2" onclick="addToCartFunction(this.id)"><img src="image/car.jpg"></button>
-            </div>
+			<table class="tbl">
+				<tr>
+					<td>
+						<div style="float:left;">
+							<img src="image/2H.jpg">
+						</div>
+						<div style="float:left;">
+							<ul>
+								<li>自動鉛筆筆芯 0.5mm 2H</li>
+								<li>適用0.5mm自動鉛筆</li>
+								<li>適合一般書寫及繪圖</li>
+								<li>學生與辦公人士皆適宜</li>
+								<li>不會傷到紙面,經濟實惠</li>
+								<li>規格齊全使用方便,書寫順暢流利</li>
+							</ul>
+						</div>
+						<div style="float:right;">
+							<button class="btn" id="2" onclick="addToCartFunction(this.id)"><img src="image/car.jpg"></button>
+						</div>
+					</td>	
+				</tr>
+			</table>
+			<div>
+				<span style="font-size:25px;">單價:</span>
+				<strong><span id="NT2H"><span></strong>
+				<span style="font-size:25px;">購買數量:</span>
+				<button id="down2H" class="bn" type="button">-</button>
+                <strong id="number2H"></strong>
+                <button id="up2H" class="bn" type="button">+</button>
+				<span style="font-size:25px;">購買金額:</span>
+				<strong id="total2H"></strong>
+			</div>
+			<script>
+				var NT2H = 12;
+				var shown2H = 0;
+				var all2H = 0;
+				var down2H = document.getElementById("down2H");
+				var up2H = document.getElementById("up2H");
+				var number2H = document.getElementById("number2H");
+				var total2H = document.getElementById("total2H");
+				document.getElementById("NT2H").innerHTML = NT2H;
+				number2H.innerHTML = shown2H;
+				total2H.innerHTML = all2H;
+				down2H.onclick=function(){
+					if(shown2H > 0){
+						shown2H--;
+						all2H = shown2H * NT2H;
+						number2H.innerHTML = shown2H;
+						total2H.innerHTML = all2H;
+					}
+				}
+				up2H.onclick=function(){
+					if(shown2H < 20){
+						shown2H++;
+						all2H = shown2H * NT2H;
+						number2H.innerHTML = shown2H;
+						total2H.innerHTML = all2H;
+					}
+				}
+			</script>
         </div>
         <div title="【3B】0.5自動鉛筆芯" id="3B" class="jump">
             <div style="float:left;">
