@@ -33,12 +33,12 @@
 			}
 			table{	
 				text-align:center;
-                border:0px #ff8360 groove;
+                border:0px #ff8320 groove;
                 cellpadding="10";
 			}
 			td{
 
-				border:0px #ff8360 groove;
+				border:0px #ff8320 groove;
 			}
 			strong{
 				color:red;
@@ -61,7 +61,7 @@
 			.bn{
 				display:flexbox;
 				width: 30px;
-				font-weight: 360;
+				font-weight: 320;
 				font-size: 17px;
 				height: 30px;
 			}
@@ -78,6 +78,38 @@
                 text-align: justify;
                 display: none;
             }
+			.toTop-arrow {
+				width: 3.5rem;
+				height: 3.5rem;
+				padding: 0;
+				margin: 0;
+				border: 0;
+				border-radius: 33%;
+				opacity: 0.6;
+				background: #000;
+				cursor: pointer;
+				position:fixed;
+				right: 1rem;
+				bottom: 1rem;
+				display: none;
+			}
+			.toTop-arrow::before, .toTop-arrow::after {
+				width: 31px;
+				height: 7px;
+				border-radius: 3px;
+				background: #fff;
+				position: absolute;
+				content: "";
+			}
+			.toTop-arrow::before {
+				transform: rotate(-45deg) translate(0, -50%);
+				left: 0.4rem;
+			}
+			.toTop-arrow::after {
+				transform: rotate(45deg) translate(0, -50%);
+				right: 0.4rem;
+			}
+			.toTop-arrow:focus {outline: none;}
 		</style>
 		
 		<script type="text/javascript">
@@ -99,83 +131,83 @@
             }
             function twoB(){
                 $('#2B').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '720', height: '360', resizable: false});
+                duration: 100}, width: '720', height: '320', resizable: false});
             }
             function twoH(){
                 $('#2H').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '720', height: '360', resizable: false});
+                duration: 100}, width: '720', height: '320', resizable: false});
             }
             function threeB(){
                 $('#3B').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '720', height: '360', resizable: false});
+                duration: 100}, width: '720', height: '320', resizable: false});
             }
             function fourB(){
                 $('#4B').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '720', height: '360', resizable: false});
+                duration: 100}, width: '720', height: '320', resizable: false});
             }
             function B(){
                 $('#B').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '720', height: '360', resizable: false});
+                duration: 100}, width: '720', height: '320', resizable: false});
             }
             function F(){
                 $('#F').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '720', height: '360', resizable: false});
+                duration: 100}, width: '720', height: '320', resizable: false});
             }
             function H(){
                 $('#H').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '720', height: '360', resizable: false});
+                duration: 100}, width: '720', height: '320', resizable: false});
             }
             function HB(){
                 $('#HB').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '720', height: '360', resizable: false});
+                duration: 100}, width: '720', height: '320', resizable: false});
             }
             function auto(){
                 $('#auto').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '720', height: '360', resizable: false});
+                duration: 100}, width: '720', height: '320', resizable: false});
             }
             function bkp(){
                 $('#bkp').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '720', height: '360', resizable: false});
+                duration: 100}, width: '720', height: '320', resizable: false});
             }
             function blp(){
                 $('#blp').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '720', height: '360', resizable: false});
+                duration: 100}, width: '720', height: '320', resizable: false});
             }
             function rdp(){
                 $('#rdp').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '720', height: '360', resizable: false});
+                duration: 100}, width: '720', height: '320', resizable: false});
             }
             function bkm(){
                 $('#bkm').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '720', height: '360', resizable: false});
+                duration: 100}, width: '720', height: '320', resizable: false});
             }
             function blm(){
                 $('#blm').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '720', height: '360', resizable: false});
+                duration: 100}, width: '720', height: '320', resizable: false});
             }
             function rm(){
                 $('#rm').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '720', height: '360', resizable: false});
+                duration: 100}, width: '720', height: '320', resizable: false});
             }
             function ruler(){
                 $('#ruler').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '720', height: '360', resizable: false});
+                duration: 100}, width: '720', height: '320', resizable: false});
             }
             function eraser(){
                 $('#eraser').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '720', height: '360', resizable: false});
+                duration: 100}, width: '720', height: '320', resizable: false});
             }
             function like(){
                 $('#like').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '720', height: '360', resizable: false});
+                duration: 100}, width: '720', height: '320', resizable: false});
             }
             function likea(){
                 $('#likea').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '720', height: '360', resizable: false});
+                duration: 100}, width: '720', height: '320', resizable: false});
             }
             function likebar(){
                 $('#likebar').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
-                duration: 100}, width: '720', height: '360', resizable: false});
+                duration: 100}, width: '720', height: '320', resizable: false});
             }
             function addToCartFunction(sidd){
             	var sid = sidd;
@@ -212,12 +244,12 @@
 	</head>	
 	<body onload="run()";>
 		<div style="background-color:#FFFFFF;" align="center">
-				<img src="image/logo.png" width="250" height="100" style="margin-left:15%;"/>
+				<img src="image/logo.png" width="250" height="100" style="margin-left:18%;"/>
 				<a href="doStationeryServlet?uid=35"><img src="image/car.png" onclick="showCart();" align="right"/></a>
 				<a href="javascript: void(0)"><img src="image/shoplist.png" align="right"/></a>
-                <a href="register.html"><img src="image/member.png" align="right"/></a>
+                <a href="login.html"><img src="image/member.png" align="right"/></a>
                 <a href="register.html"><img src="image/add.png" align="right"/></a>
-                <a href="register.html"><img src="image/exit.png" align="right"/></a>
+                <a href="javascript: void(0)"><img src="image/exit.png" align="right"/></a>
 		</div>
 		<div align="right" style="background-color:#000000;height:30px;">
 			<!-- 註冊 -->
@@ -232,7 +264,7 @@
             <a href="javascript:location.href='exitServlet';" id="exit"><span id="exit"></span></a>
             
 		</div>
-        <div align="center" style="background-color:#e6e6e6;">
+        <div align="center" style="background-color:#ffe4b5;">
             <div style="background-color:#f0f0f0;width:80%;">
                 <div align="center">
                     <div id="carouselarea" class="carousel slide" data-ride="carousel">
@@ -244,16 +276,16 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img class="d-block" src="image/bg.jpg" alt="Photo1" style="width:100%"/>
+                                <img class="d-block" src="image/bg.jpg" style="width:100%"/>
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block" src="image/bg2.jpg" alt="Photo2" style="width:100%"/>
+                                <img class="d-block" src="image/bg2.jpg" style="width:100%"/>
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block" src="image/bg3.jpg" alt="Photo3" style="width:100%"/>
+                                <img class="d-block" src="image/bg3.jpg" style="width:100%"/>
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block" src="image/bg4.jpg" alt="Photo4" style="width:100%"/>
+                                <img class="d-block" src="image/bg4.jpg" style="width:100%"/>
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselarea" role="button" data-slide="prev">
@@ -264,7 +296,7 @@
                         </a>
                     </div>
                 </div>
-                <hr style="width:850px;background-color:black;width:85%;">
+                <hr style="background-color:black;width:85%;">
                 <div align="center" class="row justify-content-around">
                     <table width="90%" style="table-layout:fixed">
                         <tr>
@@ -932,7 +964,7 @@
                                     <ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
+                                    <button class="btn" id="9" onclick="addToCartFunction(this.id)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
                                 </div>
                             </td>	
                         </tr>
@@ -993,7 +1025,7 @@
                                     <ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
+                                    <button class="btn" id="10" onclick="addToCartFunction(this.id)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
                                 </div>
                             </td>	
                         </tr>
@@ -1054,7 +1086,7 @@
                                     <ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
+                                    <button class="btn" id="11" onclick="addToCartFunction(this.id)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
                                 </div>
                             </td>	
                         </tr>
@@ -1115,7 +1147,7 @@
                                     <ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
+                                    <button class="btn" id="12" onclick="addToCartFunction(this.id)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
                                 </div>
                             </td>	
                         </tr>
@@ -1175,7 +1207,7 @@
                                     <ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
+                                    <button class="btn" id="13" onclick="addToCartFunction(this.id)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
                                 </div>
                             </td>	
                         </tr>
@@ -1235,7 +1267,7 @@
                                     <ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
+                                    <button class="btn" id="14" onclick="addToCartFunction(this.id)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
                                 </div>
                             </td>	
                         </tr>
@@ -1295,7 +1327,7 @@
                                     <ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
+                                    <button class="btn" id="15" onclick="addToCartFunction(this.id)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
                                 </div>
                             </td>	
                         </tr>
@@ -1354,7 +1386,7 @@
                                     <ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
+                                    <button class="btn" id="16" onclick="addToCartFunction(this.id)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
                                 </div>
                             </td>	
                         </tr>
@@ -1415,7 +1447,7 @@
                                     <ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
+                                    <button class="btn" id="17" onclick="addToCartFunction(this.id)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
                                 </div>
                             </td>	
                         </tr>
@@ -1476,7 +1508,7 @@
                                     <ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
+                                    <button class="btn" id="18" onclick="addToCartFunction(this.id)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
                                 </div>
                             </td>	
                         </tr>
@@ -1536,7 +1568,7 @@
                                     <ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
+                                    <button class="btn" id="19" onclick="addToCartFunction(this.id)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
                                 </div>
                             </td>	
                         </tr>
@@ -1597,7 +1629,7 @@
                                     <ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
+                                    <button class="btn" id="20" onclick="addToCartFunction(this.id)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
                                 </div>
                             </td>	
                         </tr>
@@ -1641,8 +1673,30 @@
                         }
                     </script>
                 </div>
-            </div>
+            </div>	
+			<br/>
+			<div>
+				<span>國家/地區:&nbsp;&nbsp;<img src="image/flag.png" height=30/></span>&nbsp;&nbsp;&nbsp;&nbsp;
+				<span>多元付款:&nbsp;&nbsp;<img src="image/pay.png" height=30/></span>&nbsp;&nbsp;&nbsp;&nbsp;
+				<span>便利配送:&nbsp;&nbsp;<img src="image/to.png" height=30/></span>
+			</div>
+			<br/>
 		</div>
+		<button type="button" id="BackTop" class="toTop-arrow"/>
+		<script>
+			$(function(){
+				$('#BackTop').click(function(){ 
+					$('html,body').animate({scrollTop:0}, 333);
+				});
+				$(window).scroll(function() {
+					if ( $(this).scrollTop() > 300 ){
+						$('#BackTop').fadeIn(222);
+					} else {
+						$('#BackTop').stop().fadeOut(222);
+					}
+				}).scroll();
+			});
+		</script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
 		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>

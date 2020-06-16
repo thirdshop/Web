@@ -2,13 +2,18 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>註冊</title>
+	<title>T.S.註冊</title>
 	<link rel="stylesheet" type="text/css" href="css/common.css">
 	<link rel="stylesheet" href="css/register.css">
-	
+	<link rel="icon" href="image/icon.png" type="image/x-icon" / >
 	<!--導入jquery-->
 	<script src="js/jquery-3.5.1.js"></script>
 	<script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+	<style>
+		body{
+			background-color:#ffe4b5;
+		}
+	</style>
 	<script>
 		/*
         表單校驗：
@@ -166,7 +171,7 @@
 							location.href = "register_ok.html";
 						} else {
 							// 註冊失敗
-							alert("fail");
+							alert("註冊失敗");
 							$("#errorMsg").html(data.errorMsg);
 						}
 					});
