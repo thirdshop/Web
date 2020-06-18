@@ -16,7 +16,8 @@
 	            }else{
             		var msg = "歡迎回來，"+data.name;
 	            	$("#span_username").html(msg);
-	            	$("#exit").html("登出");
+	            	
+	            	document.getElementById("exit").src="image/exit.png";
 	        	}
 	        });
 		});
@@ -27,6 +28,9 @@
 		<title>T.S.</title>
         <link rel="icon" href="image/icon.png" type="image/x-icon" / >
 		<style type=text/css>
+			.myMOUSE{ 
+				cursor: pointer; 
+			}
 			body{
 			background-color:#dbdbdb;
 				
@@ -209,13 +213,19 @@
                 $('#likebar').dialog({autoOpen: true, show:{effect:'drop', direction:'right',
                 duration: 100}, width: '720', height: '320', resizable: false});
             }
-            function addToCartFunction(sidd){
-            	var sid = sidd;
+            function addToCartFunction(sidd, namee){
+            	// 透過 name 獲取數值
+            	var sid = sidd
+            	var name = namee;
+            	var number = document.getElementsByName(name).innerHTML;
+         
+            	//alert(number);
+            	
             	$.get("findUserServlet",{},function (data) {
             		if(data){
             			var uid = data.uid;
                         // 用戶登入了，將購物資訊添加到數據庫
-                        $.get("favoriteServlet", {sid:sid}, function(){
+                        $.get("favoriteServlet", {sid:sid, number:number}, function(){
                         	alert("添加到購物車");
                             // 手動刷新頁面
                             location.reload();
@@ -227,6 +237,9 @@
                         location.href="login.html";
                     }
             	});
+            }
+            function aa(sid, number){
+            	alert(sid + number);
             }
             function showCart(){
             	$.get("findUserServlet",{},function (data) {
@@ -243,26 +256,30 @@
 		</script>
 	</head>	
 	<body onload="run()";>
-		<div style="background-color:#FFFFFF;" align="center">
+		<div class="myMOUSE" style="background-color:#FFFFFF;" align="center">
 				<img src="image/logo.png" width="250" height="100" style="margin-left:18%;"/>
-				<a href="doStationeryServlet?uid=35"><img src="image/car.png" onclick="showCart();" align="right"/></a>
-				<a href="javascript: void(0)"><img src="image/shoplist.png" align="right"/></a>
-                <a href="login.html"><img src="image/member.png" align="right"/></a>
-                <a href="register.html"><img src="image/add.png" align="right"/></a>
-                <a href="javascript: void(0)"><img src="image/exit.png" align="right"/></a>
+				<a href="javascript: void(0)"><img title="購物車" src="image/car.png" onclick="showCart();" align="right"/></a>
+				
+				<!-- <a href="javascript: void(0)"><img src="image/shoplist.png" align="right"/></a> -->
+				
+                <a href="login.html"><img title="登入" src="image/member.png" align="right"/></a>
+                <a href="register.html"><img title="註冊" src="image/add.png" align="right"/></a>
+                
+                <a href="javascript:location.href='exitServlet';" ><img id="exit" src="" align="right"/></a>
 		</div>
+		 
 		<div align="right" style="background-color:#000000;height:30px;">
-			<!-- 註冊 -->
+			<!-- 註冊 
 			<a href="register.html" class="a" id="re" style="text-decoration:none;"><span id="register"></span></a>
-			<span id="slash" class="a" style="text-decoration:none;"></span>
-			<!-- 登入 -->
+			<span id="slash" class="a" style="text-decoration:none;"></span>-->
+			<!-- 登入 
 			<a href="login.html" class="a" id="login" style="text-decoration:none;"><span id="login"></span></a>
-			
+			-->
 			<!-- 歡迎 xxx -->
-            <span id="span_username"></span>
-            <!-- 退出 -->
+            <span class="a" id="span_username"></span>
+            <!-- 退出 
             <a href="javascript:location.href='exitServlet';" id="exit"><span id="exit"></span></a>
-            
+            -->
 		</div>
         <div align="center" style="background-color:#ffe4b5;">
             <div style="background-color:#f0f0f0;width:80%;">
@@ -469,7 +486,7 @@
                                     </ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button  class="btn" id="1" onclick="addToCartFunction(this.id);"><img src="image/car.jpg"></button>
+                                    <button  class="btn" id="1" name="number2B" onclick="addToCartFunction(this.id, this.name, this.name);"><img src="image/car.jpg"></button>
                                 </div>
                             </td>	
                         </tr>
@@ -486,7 +503,7 @@
                     </div>
                     <script>
                         var NT2B = 10;
-                        var shown2B = 0;
+                        var shown2B = 1;
                         var all2B = 0;
                         var down2B = document.getElementById("down2B");
                         var up2B = document.getElementById("up2B");
@@ -494,7 +511,9 @@
                         var total2B = document.getElementById("total2B");
                         document.getElementById("NT2B").innerHTML = NT2B;
                         number2B.innerHTML = shown2B;
+                        all2B = shown2B * NT2B;
                         total2B.innerHTML = all2B;
+                       	
                         down2B.onclick=function(){
                             if(shown2B > 0){
                                 shown2B--;
@@ -502,6 +521,7 @@
                                 number2B.innerHTML = shown2B;
                                 total2B.innerHTML = all2B;
                             }
+                        	document.getElementsByName("number2B").innerHTML = shown2B;
                         }
                         up2B.onclick=function(){
                             if(shown2B < 20){
@@ -510,7 +530,9 @@
                                 number2B.innerHTML = shown2B;
                                 total2B.innerHTML = all2B;
                             }
+                            document.getElementsByName("number2B").innerHTML = shown2B;
                         }
+                        
                     </script>
                 </div>
                 <div title="【2H】0.5自動鉛筆芯" id="2H" class="jump">
@@ -531,7 +553,7 @@
                                     </ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn" id="2" onclick="addToCartFunction(this.id)"><img src="image/car.jpg"></button>
+                                    <button class="btn" id="2" name="number2H" onclick="addToCartFunction(this.id, this.name)"><img src="image/car.jpg"></button>
                                 </div>
                             </td>	
                         </tr>
@@ -548,7 +570,7 @@
                     </div>
                     <script>
                         var NT2H = 12;
-                        var shown2H = 0;
+                        var shown2H = 1;
                         var all2H = 0;
                         var down2H = document.getElementById("down2H");
                         var up2H = document.getElementById("up2H");
@@ -556,6 +578,7 @@
                         var total2H = document.getElementById("total2H");
                         document.getElementById("NT2H").innerHTML = NT2H;
                         number2H.innerHTML = shown2H;
+                        all2H = shown2H * NT2H;
                         total2H.innerHTML = all2H;
                         down2H.onclick=function(){
                             if(shown2H > 0){
@@ -564,6 +587,7 @@
                                 number2H.innerHTML = shown2H;
                                 total2H.innerHTML = all2H;
                             }
+                            document.getElementsByName("number2H").innerHTML = shown2H;
                         }
                         up2H.onclick=function(){
                             if(shown2H < 20){
@@ -572,6 +596,7 @@
                                 number2H.innerHTML = shown2H;
                                 total2H.innerHTML = all2H;
                             }
+                            document.getElementsByName("number2H").innerHTML = shown2H;
                         }
                     </script>
                 </div>
@@ -593,7 +618,7 @@
                                     </ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn" id="3" onclick="addToCartFunction(this.id)"><img src="image/car.jpg"></button>
+                                    <button class="btn" id="3" name="number3B" onclick="addToCartFunction(this.id, this.name)"><img src="image/car.jpg"></button>
                                 </div>
                             </td>	
                         </tr>
@@ -610,7 +635,7 @@
                     </div>
                     <script>
                         var NT3B = 11;
-                        var shown3B = 0;
+                        var shown3B = 1;
                         var all3B = 0;
                         var down3B = document.getElementById("down3B");
                         var up3B = document.getElementById("up3B");
@@ -618,6 +643,7 @@
                         var total3B = document.getElementById("total3B");
                         document.getElementById("NT3B").innerHTML = NT3B;
                         number3B.innerHTML = shown3B;
+                        all3B = shown3B * NT3B;
                         total3B.innerHTML = all3B;
                         down3B.onclick=function(){
                             if(shown3B > 0){
@@ -626,6 +652,7 @@
                                 number3B.innerHTML = shown3B;
                                 total3B.innerHTML = all3B;
                             }
+                            document.getElementsByName("number3B").innerHTML = shown3B;
                         }
                         up3B.onclick=function(){
                             if(shown3B < 20){
@@ -634,6 +661,7 @@
                                 number3B.innerHTML = shown3B;
                                 total3B.innerHTML = all3B;
                             }
+                            document.getElementsByName("number3B").innerHTML = shown3B;
                         }
                     </script>
                 </div>
@@ -655,7 +683,7 @@
                                     </ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn" id="4" onclick="addToCartFunction(this.id)"><img src="image/car.jpg"></button>
+                                    <button class="btn" id="4" name="number4B" onclick="addToCartFunction(this.id, this.name)"><img src="image/car.jpg"></button>
                                 </div>
                             </td>	
                         </tr>
@@ -672,7 +700,7 @@
                     </div>
                     <script>
                         var NT4B = 13;
-                        var shown4B = 0;
+                        var shown4B = 1;
                         var all4B = 0;
                         var down4B = document.getElementById("down4B");
                         var up4B = document.getElementById("up4B");
@@ -680,6 +708,7 @@
                         var total4B = document.getElementById("total4B");
                         document.getElementById("NT4B").innerHTML = NT4B;
                         number4B.innerHTML = shown4B;
+                        all4B = shown4B * NT4B;
                         total4B.innerHTML = all4B;
                         down4B.onclick=function(){
                             if(shown4B > 0){
@@ -688,6 +717,7 @@
                                 number4B.innerHTML = shown4B;
                                 total4B.innerHTML = all4B;
                             }
+                            document.getElementsByName("number4B").innerHTML = shown4B;
                         }
                         up4B.onclick=function(){
                             if(shown4B < 20){
@@ -696,6 +726,7 @@
                                 number4B.innerHTML = shown4B;
                                 total4B.innerHTML = all4B;
                             }
+                            document.getElementsByName("number4B").innerHTML = shown4B;
                         }
                     </script>
                 </div>
@@ -717,7 +748,7 @@
                                     </ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn" id="5" onclick="addToCartFunction(this.id)"><img src="image/car.jpg"></button>
+                                    <button class="btn" id="5" name="numberB" onclick="addToCartFunction(this.id, this.name)"><img src="image/car.jpg"></button>
                                 </div>
                             </td>	
                         </tr>
@@ -734,7 +765,7 @@
                     </div>
                     <script>
                         var NTB = 9;
-                        var shownB = 0;
+                        var shownB = 1;
                         var allB = 0;
                         var downB = document.getElementById("downB");
                         var upB = document.getElementById("upB");
@@ -742,6 +773,7 @@
                         var totalB = document.getElementById("totalB");
                         document.getElementById("NTB").innerHTML = NTB;
                         numberB.innerHTML = shownB;
+                        allB = shownB * NTB;
                         totalB.innerHTML = allB;
                         downB.onclick=function(){
                             if(shownB > 0){
@@ -750,6 +782,7 @@
                                 numberB.innerHTML = shownB;
                                 totalB.innerHTML = allB;
                             }
+                            document.getElementsByName("numberB").innerHTML = shownB;
                         }
                         upB.onclick=function(){
                             if(shownB < 20){
@@ -758,6 +791,7 @@
                                 numberB.innerHTML = shownB;
                                 totalB.innerHTML = allB;
                             }
+                            document.getElementsByName("numberB").innerHTML = shownB;
                         }
                     </script>
                 </div>
@@ -779,7 +813,7 @@
                                     </ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn" id="6" onclick="addToCartFunction(this.id)"><img src="image/car.jpg"></button>
+                                    <button class="btn" id="6" name="numberF" onclick="addToCartFunction(this.id, this.name)"><img src="image/car.jpg"></button>
                                 </div>
                             </td>	
                         </tr>
@@ -796,7 +830,7 @@
                     </div>
                     <script>
                         var NTF = 10;
-                        var shownF = 0;
+                        var shownF = 1;
                         var allF = 0;
                         var downF = document.getElementById("downF");
                         var upF = document.getElementById("upF");
@@ -804,6 +838,7 @@
                         var totalF = document.getElementById("totalF");
                         document.getElementById("NTF").innerHTML = NTF;
                         numberF.innerHTML = shownF;
+                        allF = shownF * NTF;
                         totalF.innerHTML = allF;
                         downF.onclick=function(){
                             if(shownF > 0){
@@ -812,6 +847,7 @@
                                 numberF.innerHTML = shownF;
                                 totalF.innerHTML = allF;
                             }
+                            document.getElementsByName("numberF").innerHTML = shownF;
                         }
                         upF.onclick=function(){
                             if(shownF < 20){
@@ -820,6 +856,7 @@
                                 numberF.innerHTML = shownF;
                                 totalF.innerHTML = allF;
                             }
+                            document.getElementsByName("numberF").innerHTML = shownF;
                         }
                     </script>
                 </div>
@@ -841,7 +878,7 @@
                                     </ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn" id="7" onclick="addToCartFunction(this.id)"><img src="image/car.jpg"></button>
+                                    <button class="btn" id="7" name="numberH" onclick="addToCartFunction(this.id, this.name)"><img src="image/car.jpg"></button>
                                 </div>
                             </td>	
                         </tr>
@@ -858,7 +895,7 @@
                     </div>
                     <script>
                         var NTH = 11;
-                        var shownH = 0;
+                        var shownH = 1;
                         var allH = 0;
                         var downH = document.getElementById("downH");
                         var upH = document.getElementById("upH");
@@ -866,6 +903,7 @@
                         var totalH = document.getElementById("totalH");
                         document.getElementById("NTH").innerHTML = NTH;
                         numberH.innerHTML = shownH;
+                        allH = shownH * NTH;
                         totalH.innerHTML = allH;
                         downH.onclick=function(){
                             if(shownH > 0){
@@ -874,6 +912,7 @@
                                 numberH.innerHTML = shownH;
                                 totalH.innerHTML = allH;
                             }
+                            document.getElementsByName("numberH").innerHTML = shownH;
                         }
                         upH.onclick=function(){
                             if(shownH < 20){
@@ -882,6 +921,7 @@
                                 numberH.innerHTML = shownH;
                                 totalH.innerHTML = allH;
                             }
+                            document.getElementsByName("numberH").innerHTML = shownH;
                         }
                     </script>
                 </div>
@@ -903,7 +943,7 @@
                                     </ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn" id="8" onclick="addToCartFunction(this.id)"><img src="image/car.jpg"></button>
+                                    <button class="btn" id="8" name="numberHB" onclick="addToCartFunction(this.id, this.name)"><img src="image/car.jpg"></button>
                                 </div>
                             </td>	
                         </tr>
@@ -920,7 +960,7 @@
                     </div>
                     <script>
                         var NTHB = 12;
-                        var shownHB = 0;
+                        var shownHB = 1;
                         var allHB = 0;
                         var downHB = document.getElementById("downHB");
                         var upHB = document.getElementById("upHB");
@@ -928,6 +968,7 @@
                         var totalHB = document.getElementById("totalHB");
                         document.getElementById("NTHB").innerHTML = NTHB;
                         numberHB.innerHTML = shownHB;
+                        allHB = shownHB * NTHB;
                         totalHB.innerHTML = allHB;
                         downHB.onclick=function(){
                             if(shownHB > 0){
@@ -936,6 +977,7 @@
                                 numberHB.innerHTML = shownHB;
                                 totalHB.innerHTML = allHB;
                             }
+                            document.getElementsByName("numberHB").innerHTML = shownHB;
                         }
                         upHB.onclick=function(){
                             if(shownHB < 20){
@@ -944,6 +986,7 @@
                                 numberHB.innerHTML = shownHB;
                                 totalHB.innerHTML = allHB;
                             }
+                            document.getElementsByName("numberHB").innerHTML = shownHB;
                         }
                     </script>
                 </div>
@@ -964,7 +1007,7 @@
                                     <ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn" id="9" onclick="addToCartFunction(this.id)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
+                                    <button class="btn" id="9" name="numberauto" onclick="addToCartFunction(this.id, this.name)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
                                 </div>
                             </td>	
                         </tr>
@@ -981,7 +1024,7 @@
                     </div>
                     <script>
                         var NTauto = 15;
-                        var shownauto = 0;
+                        var shownauto = 1;
                         var allauto = 0;
                         var downauto = document.getElementById("downauto");
                         var upauto = document.getElementById("upauto");
@@ -989,6 +1032,7 @@
                         var totalauto = document.getElementById("totalauto");
                         document.getElementById("NTauto").innerHTML = NTauto;
                         numberauto.innerHTML = shownauto;
+                        allauto = shownauto * NTauto;
                         totalauto.innerHTML = allauto;
                         downauto.onclick=function(){
                             if(shownauto > 0){
@@ -997,6 +1041,7 @@
                                 numberauto.innerHTML = shownauto;
                                 totalauto.innerHTML = allauto;
                             }
+                            document.getElementsByName("numberauto").innerHTML = shownauto;
                         }
                         upauto.onclick=function(){
                             if(shownauto < 20){
@@ -1005,6 +1050,7 @@
                                 numberauto.innerHTML = shownauto;
                                 totalauto.innerHTML = allauto;
                             }
+                            document.getElementsByName("numberauto").innerHTML = shownauto;
                         }
                     </script>
                 </div>
@@ -1025,7 +1071,7 @@
                                     <ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn" id="10" onclick="addToCartFunction(this.id)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
+                                    <button class="btn" id="10" name="numberbkp" onclick="addToCartFunction(this.id, this.name)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
                                 </div>
                             </td>	
                         </tr>
@@ -1042,7 +1088,7 @@
                     </div>
                     <script>
                         var NTbkp = 15;
-                        var shownbkp = 0;
+                        var shownbkp = 1;
                         var allbkp = 0;
                         var downbkp = document.getElementById("downbkp");
                         var upbkp = document.getElementById("upbkp");
@@ -1050,7 +1096,10 @@
                         var totalbkp = document.getElementById("totalbkp");
                         document.getElementById("NTbkp").innerHTML = NTbkp;
                         numberbkp.innerHTML = shownbkp;
+                        allbkp = shownbkp * NTbkp;
+                        allbkp = shownbkp * NTbkp;
                         totalbkp.innerHTML = allbkp;
+                        
                         downbkp.onclick=function(){
                             if(shownbkp > 0){
                                 shownbkp--;
@@ -1058,6 +1107,7 @@
                                 numberbkp.innerHTML = shownbkp;
                                 totalbkp.innerHTML = allbkp;
                             }
+                            document.getElementsByName("numberbkp").innerHTML = shownbkp;
                         }
                         upbkp.onclick=function(){
                             if(shownbkp < 20){
@@ -1066,6 +1116,7 @@
                                 numberbkp.innerHTML = shownbkp;
                                 totalbkp.innerHTML = allbkp;
                             }
+                            document.getElementsByName("numberbkp").innerHTML = shownbkp;
                         }
                     </script>
                 </div>
@@ -1086,7 +1137,7 @@
                                     <ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn" id="11" onclick="addToCartFunction(this.id)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
+                                    <button class="btn" id="11" name="numberblp" onclick="addToCartFunction(this.id, this.name)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
                                 </div>
                             </td>	
                         </tr>
@@ -1103,7 +1154,7 @@
                     </div>
                     <script>
                         var NTblp = 15;
-                        var shownblp = 0;
+                        var shownblp = 1;
                         var allblp = 0;
                         var downblp = document.getElementById("downblp");
                         var upblp = document.getElementById("upblp");
@@ -1111,6 +1162,7 @@
                         var totalblp = document.getElementById("totalblp");
                         document.getElementById("NTblp").innerHTML = NTblp;
                         numberblp.innerHTML = shownblp;
+                        allblp = shownblp * NTblp;
                         totalblp.innerHTML = allblp;
                         downblp.onclick=function(){
                             if(shownblp > 0){
@@ -1119,6 +1171,7 @@
                                 numberblp.innerHTML = shownblp;
                                 totalblp.innerHTML = allblp;
                             }
+                            document.getElementsByName("numberblp").innerHTML = shownblp;
                         }
                         upblp.onclick=function(){
                             if(shownblp < 20){
@@ -1127,6 +1180,7 @@
                                 numberblp.innerHTML = shownblp;
                                 totalblp.innerHTML = allblp;
                             }
+                            document.getElementsByName("numberblp").innerHTML = shownblp;
                         }
                     </script>
                 </div>
@@ -1147,7 +1201,7 @@
                                     <ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn" id="12" onclick="addToCartFunction(this.id)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
+                                    <button class="btn" id="12" name="numberbdp" onclick="addToCartFunction(this.id, this.name)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
                                 </div>
                             </td>	
                         </tr>
@@ -1164,7 +1218,7 @@
                     </div>
                     <script>
                         var NTbdp = 15;
-                        var shownbdp = 0;
+                        var shownbdp = 1;
                         var allbdp = 0;
                         var downbdp = document.getElementById("downbdp");
                         var upbdp = document.getElementById("upbdp");
@@ -1172,6 +1226,7 @@
                         var totalbdp = document.getElementById("totalbdp");
                         document.getElementById("NTbdp").innerHTML = NTbdp;
                         numberbdp.innerHTML = shownbdp;
+                        allbdp = shownblp * NTbdp;
                         totalbdp.innerHTML = allbdp;
                         downbdp.onclick=function(){
                             if(shownbdp > 0){
@@ -1180,6 +1235,7 @@
                                 numberbdp.innerHTML = shownbdp;
                                 totalbdp.innerHTML = allbdp;
                             }
+                            document.getElementsByName("numberbdp").innerHTML = shownbdp;
                         }
                         upbdp.onclick=function(){
                             if(shownbdp < 20){
@@ -1188,6 +1244,7 @@
                                 numberbdp.innerHTML = shownbdp;
                                 totalbdp.innerHTML = allbdp;
                             }
+                            document.getElementsByName("numberbdp").innerHTML = shownbdp;
                         }
                     </script>
                 </div>
@@ -1207,7 +1264,7 @@
                                     <ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn" id="13" onclick="addToCartFunction(this.id)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
+                                    <button class="btn" id="13" name="numberbkm" onclick="addToCartFunction(this.id, this.name)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
                                 </div>
                             </td>	
                         </tr>
@@ -1224,7 +1281,7 @@
                     </div>
                     <script>
                         var NTbkm = 20;
-                        var shownbkm = 0;
+                        var shownbkm = 1;
                         var allbkm = 0;
                         var downbkm = document.getElementById("downbkm");
                         var upbkm = document.getElementById("upbkm");
@@ -1232,6 +1289,7 @@
                         var totalbkm = document.getElementById("totalbkm");
                         document.getElementById("NTbkm").innerHTML = NTbkm;
                         numberbkm.innerHTML = shownbkm;
+                        allbkm = shownbkm * NTbkm;
                         totalbkm.innerHTML = allbkm;
                         downbkm.onclick=function(){
                             if(shownbkm > 0){
@@ -1240,6 +1298,7 @@
                                 numberbkm.innerHTML = shownbkm;
                                 totalbkm.innerHTML = allbkm;
                             }
+                            document.getElementsByName("numberbkm").innerHTML = shownbkm;
                         }
                         upbkm.onclick=function(){
                             if(shownbkm < 20){
@@ -1248,6 +1307,7 @@
                                 numberbkm.innerHTML = shownbkm;
                                 totalbkm.innerHTML = allbkm;
                             }
+                            document.getElementsByName("numberbkm").innerHTML = shownbkm;
                         }
                     </script>
                 </div>
@@ -1267,7 +1327,7 @@
                                     <ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn" id="14" onclick="addToCartFunction(this.id)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
+                                    <button class="btn" id="14" name="numberblm" onclick="addToCartFunction(this.id, this.name)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
                                 </div>
                             </td>	
                         </tr>
@@ -1284,7 +1344,7 @@
                     </div>
                     <script>
                         var NTblm = 20;
-                        var shownblm = 0;
+                        var shownblm = 1;
                         var allblm = 0;
                         var downblm = document.getElementById("downblm");
                         var upblm = document.getElementById("upblm");
@@ -1292,6 +1352,7 @@
                         var totalblm = document.getElementById("totalblm");
                         document.getElementById("NTblm").innerHTML = NTblm;
                         numberblm.innerHTML = shownblm;
+                        allblm = shownblm * NTblm;
                         totalblm.innerHTML = allblm;
                         downblm.onclick=function(){
                             if(shownblm > 0){
@@ -1300,6 +1361,7 @@
                                 numberblm.innerHTML = shownblm;
                                 totalblm.innerHTML = allblm;
                             }
+                            document.getElementsByName("numberblm").innerHTML = shownblm;
                         }
                         upblm.onclick=function(){
                             if(shownblm < 20){
@@ -1308,6 +1370,7 @@
                                 numberblm.innerHTML = shownblm;
                                 totalblm.innerHTML = allblm;
                             }
+                            document.getElementsByName("numberblm").innerHTML = shownblm;
                         }
                     </script>
                 </div>
@@ -1327,7 +1390,7 @@
                                     <ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn" id="15" onclick="addToCartFunction(this.id)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
+                                    <button class="btn" id="15" name="numberrm" onclick="addToCartFunction(this.id, this.name)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
                                 </div>
                             </td>	
                         </tr>
@@ -1344,7 +1407,7 @@
                     </div>
                     <script>
                         var NTrm = 20;
-                        var shownrm = 0;
+                        var shownrm = 1;
                         var allrm = 0;
                         var downrm = document.getElementById("downrm");
                         var uprm = document.getElementById("uprm");
@@ -1352,6 +1415,7 @@
                         var totalrm = document.getElementById("totalrm");
                         document.getElementById("NTrm").innerHTML = NTrm;
                         numberrm.innerHTML = shownrm;
+                        allrm = shownrm * NTrm;
                         totalrm.innerHTML = allrm;
                         downrm.onclick=function(){
                             if(shownrm > 0){
@@ -1360,6 +1424,7 @@
                                 numberrm.innerHTML = shownrm;
                                 totalrm.innerHTML = allrm;
                             }
+                            document.getElementsByName("numberrm").innerHTML = shownrm;
                         }
                         uprm.onclick=function(){
                             if(shownrm < 20){
@@ -1368,6 +1433,7 @@
                                 numberrm.innerHTML = shownrm;
                                 totalrm.innerHTML = allrm;
                             }
+                            document.getElementsByName("numberrm").innerHTML = shownrm;
                         }
                     </script>
                 </div>
@@ -1386,7 +1452,7 @@
                                     <ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn" id="16" onclick="addToCartFunction(this.id)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
+                                    <button class="btn" id="16" name="numberruler" onclick="addToCartFunction(this.id, this.name)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
                                 </div>
                             </td>	
                         </tr>
@@ -1403,7 +1469,7 @@
                     </div>
                     <script>
                         var NTruler = 25;
-                        var shownruler = 0;
+                        var shownruler = 1;
                         var allruler = 0;
                         var downruler = document.getElementById("downruler");
                         var upruler = document.getElementById("upruler");
@@ -1411,6 +1477,7 @@
                         var totalruler = document.getElementById("totalruler");
                         document.getElementById("NTruler").innerHTML = NTruler;
                         numberruler.innerHTML = shownruler;
+                        allruler = shownruler * NTruler;
                         totalruler.innerHTML = allruler;
                         downruler.onclick=function(){
                             if(shownruler > 0){
@@ -1419,6 +1486,7 @@
                                 numberruler.innerHTML = shownruler;
                                 totalruler.innerHTML = allruler;
                             }
+                            document.getElementsByName("numberruler").innerHTML = shownruler;
                         }
                         upruler.onclick=function(){
                             if(shownruler < 20){
@@ -1427,6 +1495,7 @@
                                 numberruler.innerHTML = shownruler;
                                 totalruler.innerHTML = allruler;
                             }
+                            document.getElementsByName("numberruler").innerHTML = shownruler;
                         }
                     </script>
                 </div>
@@ -1447,7 +1516,7 @@
                                     <ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn" id="17" onclick="addToCartFunction(this.id)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
+                                    <button class="btn" id="17" name="numbereraser" onclick="addToCartFunction(this.id, this.name)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
                                 </div>
                             </td>	
                         </tr>
@@ -1464,7 +1533,7 @@
                     </div>
                     <script>
                         var NTeraser = 18;
-                        var showneraser = 0;
+                        var showneraser = 1;
                         var alleraser = 0;
                         var downeraser = document.getElementById("downeraser");
                         var uperaser = document.getElementById("uperaser");
@@ -1472,6 +1541,7 @@
                         var totaleraser = document.getElementById("totaleraser");
                         document.getElementById("NTeraser").innerHTML = NTeraser;
                         numbereraser.innerHTML = showneraser;
+                        alleraser = showneraser * NTeraser;
                         totaleraser.innerHTML = alleraser;
                         downeraser.onclick=function(){
                             if(showneraser > 0){
@@ -1480,6 +1550,7 @@
                                 numbereraser.innerHTML = showneraser;
                                 totaleraser.innerHTML = alleraser;
                             }
+                            document.getElementsByName("numbereraser").innerHTML = showneraser;
                         }
                         uperaser.onclick=function(){
                             if(showneraser < 20){
@@ -1488,6 +1559,7 @@
                                 numbereraser.innerHTML = showneraser;
                                 totaleraser.innerHTML = alleraser;
                             }
+                            document.getElementsByName("numbereraser").innerHTML = showneraser;
                         }
                     </script>
                 </div>
@@ -1508,7 +1580,7 @@
                                     <ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn" id="18" onclick="addToCartFunction(this.id)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
+                                    <button class="btn" id="18" name="numberlike" onclick="addToCartFunction(this.id, this.name)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
                                 </div>
                             </td>	
                         </tr>
@@ -1525,7 +1597,7 @@
                     </div>
                     <script>
                         var NTlike = 35;
-                        var shownlike = 0;
+                        var shownlike = 1;
                         var alllike = 0;
                         var downlike = document.getElementById("downlike");
                         var uplike = document.getElementById("uplike");
@@ -1533,6 +1605,7 @@
                         var totallike = document.getElementById("totallike");
                         document.getElementById("NTlike").innerHTML = NTlike;
                         numberlike.innerHTML = shownlike;
+                        alllike = shownlike * NTlike;
                         totallike.innerHTML = alllike;
                         downlike.onclick=function(){
                             if(shownlike > 0){
@@ -1541,6 +1614,7 @@
                                 numberlike.innerHTML = shownlike;
                                 totallike.innerHTML = alllike;
                             }
+                            document.getElementsByName("numberlike").innerHTML = shownlike;
                         }
                         uplike.onclick=function(){
                             if(shownlike < 20){
@@ -1549,6 +1623,7 @@
                                 numberlike.innerHTML = shownlike;
                                 totallike.innerHTML = alllike;
                             }
+                            document.getElementsByName("numberlike").innerHTML = shownlike;
                         }
                     </script>
                 </div>
@@ -1568,7 +1643,7 @@
                                     <ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn" id="19" onclick="addToCartFunction(this.id)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
+                                    <button class="btn" id="19" name="numberlikea" onclick="addToCartFunction(this.id, this.name)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
                                 </div>
                             </td>	
                         </tr>
@@ -1585,7 +1660,7 @@
                     </div>
                     <script>
                         var NTlikea = 18;
-                        var shownlikea = 0;
+                        var shownlikea = 1;
                         var alllikea = 0;
                         var downlikea = document.getElementById("downlikea");
                         var uplikea = document.getElementById("uplikea");
@@ -1593,6 +1668,7 @@
                         var totallikea = document.getElementById("totallikea");
                         document.getElementById("NTlikea").innerHTML = NTlikea;
                         numberlikea.innerHTML = shownlikea;
+                        alllikea = shownlikea * NTlikea;
                         totallikea.innerHTML = alllikea;
                         downlikea.onclick=function(){
                             if(shownlikea > 0){
@@ -1601,6 +1677,7 @@
                                 numberlikea.innerHTML = shownlikea;
                                 totallikea.innerHTML = alllikea;
                             }
+                            document.getElementsByName("numberlikea").innerHTML = shownlikea;
                         }
                         uplikea.onclick=function(){
                             if(shownlikea < 20){
@@ -1609,6 +1686,7 @@
                                 numberlikea.innerHTML = shownlikea;
                                 totallikea.innerHTML = alllikea;
                             }
+                            document.getElementsByName("numberlikea").innerHTML = shownlikea;
                         }
                     </script>
                 </div>
@@ -1629,7 +1707,7 @@
                                     <ul>
                                 </div>
                                 <div style="float:right;">
-                                    <button class="btn" id="20" onclick="addToCartFunction(this.id)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
+                                    <button class="btn" id="20" name="numberlikebar" onclick="addToCartFunction(this.id, this.name)"><a href="javascript: void(0)"><img src="image/car.jpg"></a></button>
                                 </div>
                             </td>	
                         </tr>
@@ -1646,7 +1724,7 @@
                     </div>
                     <script>
                         var NTlikebar = 23;
-                        var shownlikebar = 0;
+                        var shownlikebar = 1;
                         var alllikebar = 0;
                         var downlikebar = document.getElementById("downlikebar");
                         var uplikebar = document.getElementById("uplikebar");
@@ -1654,6 +1732,7 @@
                         var totallikebar = document.getElementById("totallikebar");
                         document.getElementById("NTlikebar").innerHTML = NTlikebar;
                         numberlikebar.innerHTML = shownlikebar;
+                        alllikebar = shownlikebar * NTlikebar;
                         totallikebar.innerHTML = alllikebar;
                         downlikebar.onclick=function(){
                             if(shownlikebar > 0){
@@ -1662,6 +1741,7 @@
                                 numberlikebar.innerHTML = shownlikebar;
                                 totallikebar.innerHTML = alllikebar;
                             }
+                            document.getElementsByName("numberlikebar").innerHTML = shownlikebar;
                         }
                         uplikebar.onclick=function(){
                             if(shownlikebar < 20){
@@ -1670,6 +1750,7 @@
                                 numberlikebar.innerHTML = shownlikebar;
                                 totallikebar.innerHTML = alllikebar;
                             }
+                            document.getElementsByName("numberlikebar").innerHTML = shownlikebar;
                         }
                     </script>
                 </div>
